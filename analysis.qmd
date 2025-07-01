@@ -10,6 +10,8 @@ execute:
 #| message: false
 library(tidyverse)
 library(primer.data)
+library(tidymodels)
+library(broom)
 ```
 
 ```{r}
@@ -21,4 +23,10 @@ x <- nhanes |>
   drop_na() |>
   slice_sample(n = 50) 
 ```
-Human height varies across individuals and is often influenced by biological characteristics like sex. Using data from the NHANES study, which includes thousands of observations collected in the United States by the CDC, we examine whether males and females aged 18 to 27 differ in average height.
+Human height varies across individuals and is often influenced by biological characteristics like sex. Using data from the NHANES study, which includes thousands of observations collected in the United States by the CDC, we examine whether males and females aged 18 to 27 differ in average height. One potential weakness in our model is that the NHANES sample may not fully represent the current population of USMC recruits, leading to biased estimates.
+
+
+
+$$
+Y = \beta_0 + \beta_1 X_1 + \beta_2 X_2 + \cdots + \beta_k X_k
+$$
