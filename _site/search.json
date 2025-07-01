@@ -1,0 +1,23 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Height Influences",
+    "section": "",
+    "text": "This is a Quarto website.\nTo learn more about Quarto websites visit https://quarto.org/docs/websites."
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "About this site"
+  },
+  {
+    "objectID": "analysis.html",
+    "href": "analysis.html",
+    "title": "Two-Parameters",
+    "section": "",
+    "text": "Human height varies across individuals and is often influenced by biological characteristics like sex. Using data from the NHANES study, which includes thousands of observations collected in the United States by the CDC, we examine whether males and females aged 18 to 27 differ in average height. One potential weakness in our model is that the NHANES sample may not fully represent the current population of USMC recruits, leading to biased estimates. We model height, measured in centimeters, as a linear function of sex to estimate how average height differs between males and females. We estimate that males are, on average, 6.2 centimeters taller than females, with a 95% confidence interval ranging from 3.8 to 8.6 centimeters.\n\\[\nY = \\beta_0 + \\beta_1 X_1 + \\beta_2 X_2 + \\cdots + \\beta_k X_k\n\\] \\[\n\\hat{height} = 166.4 + 6.2 \\cdot male\n\\]\n\n\n\n\n\n\n\n\nHeight Regression Estimates\n\n\nWith 95% Confidence Intervals\n\n\nterm\nestimate\nconf.low\nconf.high\n\n\n\n\n(Intercept)\n162.2\n159.7\n164.6\n\n\nsexMale\n15.9\n12.3\n19.6"
+  }
+]

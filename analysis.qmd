@@ -12,6 +12,7 @@ library(tidyverse)
 library(primer.data)
 library(tidymodels)
 library(broom)
+library(marginaleffects)
 ```
 
 ```{r}
@@ -23,7 +24,8 @@ x <- nhanes |>
   drop_na() |>
   slice_sample(n = 50) 
 ```
-Human height varies across individuals and is often influenced by biological characteristics like sex. Using data from the NHANES study, which includes thousands of observations collected in the United States by the CDC, we examine whether males and females aged 18 to 27 differ in average height. One potential weakness in our model is that the NHANES sample may not fully represent the current population of USMC recruits, leading to biased estimates. We model height, measured in centimeters, as a linear function of sex to estimate how average height differs between males and females.
+Human height varies across individuals and is often influenced by biological characteristics like sex. Using data from the NHANES study, which includes thousands of observations collected in the United States by the CDC, we examine whether males and females aged 18 to 27 differ in average height. One potential weakness in our model is that the NHANES sample may not fully represent the current population of USMC recruits, leading to biased estimates. We model height, measured in centimeters, as a linear function of sex to estimate how average height differs between males and females. We estimate that males are, on average, 6.2 centimeters taller than females, with a 95% confidence interval ranging from 3.8 to 8.6 centimeters.
+
 
 
 
@@ -58,5 +60,22 @@ fit_height |>
     columns = c(estimate, conf.low, conf.high),
     decimals = 1
   )
+
+```
+
+```{r}
+x |>
+  mutate(sex = if_else(sex == "male", "Male", "Female")) |>
+  ggplot(aes(x = sex, y = height, fill = sex)) +
+  geom_boxplot(alpha = 0.7, width = 0.5, color = "black") +
+  labs(
+    title = "Height by Sex Among Young Adults",
+    subtitle = "Males tend to be taller on average than females aged 18–27",
+    x = "Sex",
+    y = "Height (cm)",
+    caption = "Source: NHANES 2009–2011, Centers for Disease Control and Prevention"
+  ) +
+  theme_minimal() +
+  theme(legend.position = "none")
 
 ```
