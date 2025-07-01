@@ -2,5 +2,23 @@
 title: "Two-Parameters"
 format: html
 author: "Jacob Khaykin"
+execute:
+    echo: false
 ---
 
+```{r}
+#| message: false
+library(tidyverse)
+library(primer.data)
+```
+
+```{r}
+set.seed(10)
+
+x <- nhanes |>
+  filter(age >= 18 & age <= 27) |>
+  select(height, sex) |>
+  drop_na() |>
+  slice_sample(n = 50) 
+```
+Human height varies across individuals and is often influenced by biological characteristics like sex. Using data from the NHANES study, which includes thousands of observations collected in the United States by the CDC, we examine whether males and females aged 18 to 27 differ in average height.
